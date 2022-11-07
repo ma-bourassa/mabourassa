@@ -10,13 +10,9 @@ export async function getStaticPaths({ paginate }) {
   return paginate(posts, { pageSize: 1 });
 }
 const { page } = Astro.props;
-console.log({ page });
 ---
 
 <BaseLayout title='Blog'>
-  <div>coucou</div>
-  <pre>{page.url.prev}</pre>
-
   <ul>
     <!--List the array of astronaut info-->
     {

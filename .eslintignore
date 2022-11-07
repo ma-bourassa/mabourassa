@@ -1,0 +1,7 @@
+public/
+.eslintrc
+tailwind.config.cjs
+postcss.config.cjs
+dist
+node_modules
+.github
