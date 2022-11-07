@@ -1,0 +1,7 @@
+---
+export async function getAllProducts() {
+  return (await Astro.glob('../**/store/*.md')).sort(
+    (a, b) => new Date(b.frontmatter.pubDate).valueOf() - new Date(a.frontmatter.pubDate).valueOf()
+  );
+}
+---

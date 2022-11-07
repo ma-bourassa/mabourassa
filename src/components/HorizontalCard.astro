@@ -1,5 +1,5 @@
 ---
-const { title, img, desc, url, badge, tags, target = '_blank' } = Astro.props;
+const { title, img, desc, url, tags, target = '_blank' } = Astro.props;
 ---
 
 <div class='bg-base-100 rounded-lg transition ease-in-out hover:scale-[102%] hover:shadow-xl'>
@@ -9,7 +9,6 @@ const { title, img, desc, url, badge, tags, target = '_blank' } = Astro.props;
       <div class='w-full grow'>
         <h1 class='text-xl font-bold'>
           {title}
-          {badge && <div class='badge badge-secondary mx-2'>{badge}</div>}
         </h1>
         <p class='text-1xl py-1'>{desc}</p>
         <div class='card-actions justify-end'>

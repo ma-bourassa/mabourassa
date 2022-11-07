@@ -1,0 +1,7 @@
+---
+export async function getAllProjects() {
+  return (await Astro.glob('../**/projects/*.md')).sort(
+    (a, b) => new Date(b.frontmatter.pubDate).valueOf() - new Date(a.frontmatter.pubDate).valueOf()
+  );
+}
+---
