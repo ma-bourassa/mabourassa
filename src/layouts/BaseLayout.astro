@@ -19,7 +19,7 @@ const { image, title = SITE.title, description = SITE.description } = Astro.prop
       <input id='my-drawer' type='checkbox' class='drawer-toggle' />
       <div class='drawer-content bg-base-100 flex min-h-screen flex-col'>
         <Header />
-        <main class='max-w-[1024px] flex-1 p-8 md:ml-8'>
+        <main class='container mx-auto flex-1 p-8 md:p-12'>
           <slot />
         </main>
         <Footer />

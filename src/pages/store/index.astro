@@ -1,0 +1,23 @@
+---
+import ShopItem from '../../components/ShopItem.astro';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { getAllProducts, IPrice } from '../../lib/store';
+import { toDollars } from '../../utils/money';
+
+const prices: IPrice[] = await getAllProducts();
+---
+
+<BaseLayout title='Store'>
+  <div class='grid-cols-auto grid gap-8'>
+    {
+      prices.map((price) => (
+        <ShopItem
+          title={price.product.name}
+          img={price.product.images[0]}
+          desc={price.product.description}
+          price={toDollars(price.unit_amount)}
+        />
+      ))
+    }
+  </div>
+</BaseLayout>
