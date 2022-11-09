@@ -1,0 +1,7 @@
+---
+export async function getAllPosts() {
+  return (await Astro.glob('/**/blog/*.{md,mdx}')).sort(
+    (a, b) => new Date(b.frontmatter.pubDate).valueOf() - new Date(a.frontmatter.pubDate).valueOf()
+  );
+}
+---

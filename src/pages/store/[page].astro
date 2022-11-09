@@ -32,7 +32,7 @@ const { id, name, description, image, price }: Props = Astro.props;
 ---
 
 <BaseLayout title={name} description={description} image={image}>
-  <div class='flex flex-wrap items-center justify-center'>
+  <div class='gap-8 flex flex-wrap items-center justify-center'>
     <img src={image} alt={name} class='w-80 rounded-lg' />
 
     <div class='flex flex-col'>
