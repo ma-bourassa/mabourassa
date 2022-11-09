@@ -1,25 +1,22 @@
 ---
 interface Props {
-  title: string;
-  img: string;
+  name: string;
+  image: string;
   price: string;
   url: string;
 }
-const { title, img, price, url }: Props = Astro.props;
+const { name, image, price, url }: Props = Astro.props;
 ---
 
-<div class='card shadow-xl transition ease-in-out hover:scale-[102%] cursor-pointer'>
-  <a href={`store/${url}`}>
-    <figure class='px-8 pt-8'><img src={img} alt={title} class='object-contain aspect-[4/3]' /></figure>
-    <div class='card-body'>
-      <h2 class='card-title'>
-        {title}
-      </h2>
-      <div class='badge badge-secondary'>NEW</div>
-      <div class='mt-4 text-xl'>{price}</div>
-      <div class='card-actions justify-end pt-4 mt-auto'>
-        <div class='btn btn-accent'>Add to cart</div>
-      </div>
+<div>
+  <a href={`store/${url}`} class='group'>
+    <div class='rounded-lg h-80'>
+      <img src={image} alt={name} class='h-full w-full object-contain object-center group-hover:opacity-75' />
     </div>
+    <h2 class='mt-4'>{name}</h2>
+    <p class='mt-2 text-xl font-medium text-gray-900'>{price}</p>
   </a>
+  <div class='jus pt-4 mt-auto flex'>
+    <div class='btn btn-accent'>Add to cart</div>
+  </div>
 </div>

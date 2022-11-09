@@ -32,11 +32,11 @@ const { id, name, description, image, price }: Props = Astro.props;
 ---
 
 <BaseLayout title={name} description={description} image={image}>
-  <div class='mx-auto flex flex-wrap'>
-    <figure class='px-8 pt-8'><img src={image} alt={name} class='object-contain' /></figure>
+  <div class='flex flex-wrap items-center justify-center'>
+    <img src={image} alt={name} class='w-80 rounded-lg' />
 
-    <div class='lg:w-1/2 w-full lg:pl-10 lg:py-6 mt-6 lg:mt-0'>
-      <h1 class='title-font text-gray-900 text-3xl font-medium mb-4'>{name}</h1>
+    <div class='flex flex-col'>
+      <h1 class='text-3xl mb-4'>{name}</h1>
 
       <p class='leading-relaxed mb-4'>
         {description}
@@ -44,7 +44,7 @@ const { id, name, description, image, price }: Props = Astro.props;
       <div class='flex gap-4 items-center mb-4'>
         <span class='text-2xl'>{toDollars(price)}</span>
         <input
-          class='input input-bordered input-sm ml-4'
+          class='input input-bordered ml-4'
           type='number'
           id='quantity'
           name='quantity'
@@ -54,7 +54,7 @@ const { id, name, description, image, price }: Props = Astro.props;
           size='4'
         />
       </div>
-      <button class='btn btn-accent'>Add to cart</button>
+      <button class='btn btn-wide btn-accent'>Add to cart</button>
     </div>
   </div>
 </BaseLayout>

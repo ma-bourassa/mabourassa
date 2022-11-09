@@ -9,12 +9,12 @@ const prices: IPrice[] = await getAllProducts();
 ---
 
 <BaseLayout title='Store'>
-  <div class='grid-cols-auto grid gap-8'>
+  <div class='grid-cols-auto grid gap-10'>
     {
       prices.map((price) => (
         <ShopItem
-          title={price.product.name}
-          img={price.product.images[0]}
+          name={price.product.name}
+          image={price.product.images[0]}
           price={toDollars(price.unit_amount)}
           url={slugify(price.product.name)}
         />
