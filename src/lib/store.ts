@@ -13,7 +13,5 @@ export async function getAllProducts() {
     limit: 10,
   });
 
-  console.log(prices);
-
   return <IPrice[]>prices.data;
 }

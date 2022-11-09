@@ -1,8 +1,9 @@
 ---
-import ShopItem from '../../components/ShopItem.astro';
-import BaseLayout from '../../layouts/BaseLayout.astro';
-import { getAllProducts, IPrice } from '../../lib/store';
-import { toDollars } from '../../utils/money';
+import ShopItem from '../components/ShopItem.astro';
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { getAllProducts, IPrice } from '../lib/store';
+import { toDollars } from '../utils/money';
+import { slugify } from '../utils/string';
 
 const prices: IPrice[] = await getAllProducts();
 ---
@@ -14,8 +15,8 @@ const prices: IPrice[] = await getAllProducts();
         <ShopItem
           title={price.product.name}
           img={price.product.images[0]}
-          desc={price.product.description}
           price={toDollars(price.unit_amount)}
+          url={slugify(price.product.name)}
         />
       ))
     }

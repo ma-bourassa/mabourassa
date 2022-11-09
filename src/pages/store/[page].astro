@@ -1,29 +1,60 @@
 ---
-import ShopItem from '../../components/ShopItem.astro';
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import { getAllProducts, IPrice } from '../../lib/store';
 import { toDollars } from '../../utils/money';
+import { slugify } from '../../utils/string';
 
-const prices: IPrice[] = await getAllProducts();
+export async function getStaticPaths() {
+  const prices: IPrice[] = await getAllProducts();
+
+  return prices.map((price) => {
+    return {
+      params: { page: slugify(price.product.name) },
+      props: {
+        id: price.id,
+        name: price.product.name,
+        description: price.product.description,
+        image: price.product.images[0],
+        price: price.unit_amount,
+      },
+    };
+  });
+}
+
+interface Props {
+  id: string;
+  name: string;
+  description: string;
+  image: string;
+  price: number;
+}
+const { id, name, description, image, price }: Props = Astro.props;
 ---
 
-<BaseLayout title='Store'>
-  <div>
-    {prices.map((price) => <pre>{JSON.stringify(price, null, 2)}</pre>)}
+<BaseLayout title={name} description={description} image={image}>
+  <div class='mx-auto flex flex-wrap'>
+    <figure class='px-8 pt-8'><img src={image} alt={name} class='object-contain' /></figure>
+
+    <div class='lg:w-1/2 w-full lg:pl-10 lg:py-6 mt-6 lg:mt-0'>
+      <h1 class='title-font text-gray-900 text-3xl font-medium mb-4'>{name}</h1>
+
+      <p class='leading-relaxed mb-4'>
+        {description}
+      </p>
+      <div class='flex gap-4 items-center mb-4'>
+        <span class='text-2xl'>{toDollars(price)}</span>
+        <input
+          class='input input-bordered input-sm ml-4'
+          type='number'
+          id='quantity'
+          name='quantity'
+          min='1'
+          value='1'
+          autocomplete='off'
+          size='4'
+        />
+      </div>
+      <button class='btn btn-accent'>Add to cart</button>
+    </div>
   </div>
-  <ul>
-    {
-      prices.map((price) => (
-        <>
-          <ShopItem
-            title={price.product.name}
-            img={price.product.images[0]}
-            desc={price.product.description}
-            price={toDollars(price.unit_amount)}
-          />
-          <div class='divider my-0' />
-        </>
-      ))
-    }
-  </ul>
 </BaseLayout>

@@ -6,7 +6,12 @@ import SideBar from '../components/SideBar.astro';
 
 import { SITE } from '../config';
 
-const { image, title = SITE.title, description = SITE.description } = Astro.props;
+interface Props {
+  title?: string;
+  description?: string;
+  image?: string;
+}
+const { image, title = SITE.title, description = SITE.description }: Props = Astro.props;
 ---
 
 <!DOCTYPE html>

@@ -1,23 +1,19 @@
 ---
 import BaseLayout from './BaseLayout.astro';
 
-export interface Props {
-  content: {
-    title: string;
-    description: string;
-    pubDate?: string;
-    updatedDate?: string;
-    heroImage?: string;
-  };
+interface Props {
+  title: string;
+  description: string;
+  pubDate?: string;
+  updatedDate?: string;
+  heroImage?: string;
 }
 
-const {
-  content: { title, description, pubDate, updatedDate, heroImage },
-} = Astro.props;
+const { title, description, pubDate, updatedDate, heroImage }: Props = Astro.props;
 ---
 
 <BaseLayout title={title} description={description} image={heroImage}>
-  <main class='md:flex md:justify-center'>
+  <div class='md:flex md:justify-center'>
     <article class='prose prose-lg prose-img:mx-auto max-w-[750px]'>
       {heroImage && <img src={heroImage} alt={title} class='mb-6 w-full' />}
       <h1 class='title my-2 text-4xl font-bold'>{title}</h1>
@@ -25,13 +21,12 @@ const {
       {
         updatedDate && (
           <div>
-            {' '}
-            Last updated on <time>{updatedDate}</time>{' '}
+            Last updated on <time>{updatedDate}</time>
           </div>
         )
       }
       <div class='divider my-2'></div>
       <slot />
     </article>
-  </main>
+  </div>
 </BaseLayout>
