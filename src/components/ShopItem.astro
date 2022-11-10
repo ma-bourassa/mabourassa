@@ -9,7 +9,7 @@ const { name, image, price, url }: Props = Astro.props;
 ---
 
 <div>
-  <a href={`store/${url}`} class='group'>
+  <a href={url} class='group'>
     <div class='rounded-lg h-80'>
       <img src={image} alt={name} class='h-full w-full object-contain object-center group-hover:opacity-75' />
     </div>
