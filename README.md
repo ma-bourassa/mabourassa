@@ -6,7 +6,6 @@ Personal website
 - Store with test products with Stripe
 - Blog
 - Resume
-- Contact form hosted on netlify
 
 The live version is [Here](https://mabourassa.dev)
 
