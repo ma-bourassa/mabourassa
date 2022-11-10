@@ -9,6 +9,8 @@ const prices: IPrice[] = await getAllProducts();
 ---
 
 <BaseLayout title='Store'>
+  <h1 class='mb-8 text-3xl font-bold'>Store</h1>
+
   <div class='grid-cols-auto grid gap-10'>
     {
       prices.map((price) => (

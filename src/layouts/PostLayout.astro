@@ -5,12 +5,14 @@ interface Props {
   content: {
     title: string;
     description: string;
+    pubDate?: string;
+    updatedDate?: string;
     image?: string;
-    tags?: string[];
   };
 }
+
 const {
-  content: { title, description, image, tags },
+  content: { title, description, pubDate, updatedDate, image },
 }: Props = Astro.props;
 ---
 
@@ -19,10 +21,14 @@ const {
     <article class='prose prose-lg max-w-[1280px]'>
       {image && <img src={image} alt={title} class='mb-6 w-full' />}
       <h1 class='title my-2 text-4xl font-bold'>{title}</h1>
-      <div>{description}</div>
-      <div class='mt-2 flex gap-2'>
-        {tags.map((tag) => <div class='badge badge-lg badge-info'>{tag}</div>)}
-      </div>
+      {pubDate && <time>{pubDate}</time>}
+      {
+        updatedDate && (
+          <div>
+            Last updated on <time>{updatedDate}</time>
+          </div>
+        )
+      }
       <div class='divider my-2'></div>
       <slot />
     </article>

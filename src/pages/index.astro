@@ -7,12 +7,13 @@ import { getAllProjects } from '../lib/projects.astro';
 const posts = await getAllPosts();
 const projects = await getAllProjects();
 const last_posts = posts.slice(0, 3);
+const last_projects = projects.slice(0, 3);
 ---
 
 <BaseLayout>
   <div>
-    <div class='text-5xl font-bold'>Marc-André Bourassa</div>
-    <div class='py-3 text-3xl font-bold'>Software Engineer</div>
+    <h1 class='text-5xl font-bold'>Marc-André Bourassa</h1>
+    <h2 class='py-3 text-3xl font-bold'>Software Engineer</h2>
     <div class='py-2'>
       <text class='text-lg'>
         Welcome to my personal website. I use this place to showcase my projects and a sandbox to play around with new
@@ -24,43 +25,29 @@ const last_posts = posts.slice(0, 3);
     </div>
   </div>
 
-  <div>
-    <div class='mb-2 w-full text-3xl font-bold'>My last projects {'</>'}</div>
-  </div>
+  <h2 class='mb-2 w-full text-3xl font-bold'>My last projects {'</>'}</h2>
+  {
+    last_projects.map((project) => (
+      <>
+        <HorizontalCard
+          title={project.frontmatter.title}
+          img={project.frontmatter.image}
+          desc={project.frontmatter.description}
+          url={project.url}
+          target='_self'
+        />
+        <div class='divider my-0' />
+      </>
+    ))
+  }
 
-  <HorizontalCard
-    title='Demo Project 1'
-    img='/post_img.webp'
-    desc='Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.'
-    url='#'
-    badge='NEW'
-  />
-  <div class='divider my-0'></div>
-  <HorizontalCard
-    title='Demo Project 2'
-    img='/post_img.webp'
-    desc='Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.'
-    url='#'
-  />
-  <div class='divider my-0'></div>
-  <HorizontalCard
-    title='Demo Project 3'
-    img='/post_img.webp'
-    desc='Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.'
-    url='#'
-    badge='FOSS'
-  />
-
-  <div>
-    <div class='mb-5 mt-10 w-full text-3xl font-bold'>Latest from blog</div>
-  </div>
-
+  <h2 class='mb-5 mt-10 w-full text-3xl font-bold'>Latest posts</h2>
   {
     last_posts.map((post) => (
       <>
         <HorizontalCard
           title={post.frontmatter.title}
-          img={post.frontmatter.heroImage}
+          img={post.frontmatter.image}
           desc={post.frontmatter.description}
           url={post.url}
           target='_self'

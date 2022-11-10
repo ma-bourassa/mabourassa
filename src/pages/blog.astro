@@ -7,13 +7,15 @@ const posts = await getAllPosts();
 ---
 
 <BaseLayout title='Blog'>
+  <h1 class='mb-8 text-3xl font-bold'>Blog</h1>
+
   <div>
     {
       posts.map((post) => (
         <>
           <HorizontalCard
             title={post.frontmatter.title}
-            img={post.frontmatter.heroImage}
+            img={post.frontmatter.image}
             desc={post.frontmatter.description}
             url={post.url}
           />
