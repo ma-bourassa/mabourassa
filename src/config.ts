@@ -4,6 +4,6 @@
 export const SITE = {
   title: 'Marc-André Bourassa Website',
   description: 'Marc-André Bourassa personal website. Showcasing, projects, CV, blog, themes and responsive design.',
-  origin: 'https://mabourassa.dev',
+  origin: 'https://mabourassa.com/',
   basePathname: '/',
 };

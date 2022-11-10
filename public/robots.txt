@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://mabourassa.dev/sitemap-index.xml
+Sitemap: https://mabourassa.com/sitemap-index.xml

@@ -13,7 +13,7 @@ const { title, subtitle, tags }: Props = Astro.props;
   <slot />
   {
     tags && (
-      <div class='my-4 flex gap-2'>
+      <div class='my-4 flex flex-wrap gap-2 '>
         {tags.split(',').map((tag) => (
           <div class='badge badge-ghost'>{tag}</div>
         ))}

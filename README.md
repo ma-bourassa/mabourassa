@@ -7,7 +7,7 @@ Personal website
 - Blog
 - Resume
 
-The live version is [Here](https://mabourassa.dev)
+The live version is [Here](https://mabourassa.com/)
 
 ## Additional Information
 
