@@ -1,0 +1,26 @@
+---
+import ShopItem from '../components/ShopItem.astro';
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { getAllProducts, IPrice } from '../lib/store';
+import { toDollars } from '../utils/money';
+import { slugify } from '../utils/string';
+
+const prices: IPrice[] = await getAllProducts();
+---
+
+<BaseLayout title='Store'>
+  <h1 class='mb-8 text-3xl font-bold'>Store</h1>
+
+  <div class='grid-cols-auto grid gap-10'>
+    {
+      prices.map((price) => (
+        <ShopItem
+          name={price.product.name}
+          image={price.product.images[0]}
+          price={toDollars(price.unit_amount)}
+          url={slugify(price.product.name)}
+        />
+      ))
+    }
+  </div>
+</BaseLayout>

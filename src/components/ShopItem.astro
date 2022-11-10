@@ -1,0 +1,22 @@
+---
+interface Props {
+  name: string;
+  image: string;
+  price: string;
+  url: string;
+}
+const { name, image, price, url }: Props = Astro.props;
+---
+
+<div>
+  <a href={`store/${url}`} class='group'>
+    <div class='rounded-lg h-80'>
+      <img src={image} alt={name} class='h-full w-full object-contain object-center group-hover:opacity-75' />
+    </div>
+    <h2 class='mt-4'>{name}</h2>
+    <p class='mt-2 text-xl font-medium text-gray-900'>{price}</p>
+  </a>
+  <div class='jus pt-4 mt-auto flex'>
+    <div class='btn btn-accent'>Add to cart</div>
+  </div>
+</div>

@@ -1,0 +1,27 @@
+---
+import HorizontalCard from '../components/HorizontalCard.astro';
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { getAllPosts } from '../lib/blogs.astro';
+
+const posts = await getAllPosts();
+---
+
+<BaseLayout title='Blog'>
+  <h1 class='mb-8 text-3xl font-bold'>Blog</h1>
+
+  <div>
+    {
+      posts.map((post) => (
+        <>
+          <HorizontalCard
+            title={post.frontmatter.title}
+            img={post.frontmatter.image}
+            desc={post.frontmatter.description}
+            url={post.url}
+          />
+          <div class='divider' />
+        </>
+      ))
+    }
+  </div>
+</BaseLayout>

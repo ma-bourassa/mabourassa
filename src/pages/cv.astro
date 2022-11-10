@@ -1,115 +1,142 @@
 ---
-import BaseLayout from "../layouts/BaseLayout.astro";
-import TimeLineElement from "../components/cv/TimeLine.astro";
+import CVItem from '../components/CVItem.astro';
+import BaseLayout from '../layouts/BaseLayout.astro';
 ---
 
-<BaseLayout title = "Resume">
-  <div class="mb-5">
-    <div class="text-3xl w-full font-bold">Profile</div>
+<BaseLayout title='Resume'>
+  <h1 class='mb-8 text-3xl font-bold'>Resume</h1>
+
+  <div class='mb-10 text-justify'>
+    Software developer passionate about web technologies, health, problem solving, user experience, efficiency, clean
+    code and coffee. ☕️
   </div>
 
-  <div class="mb-10 text-justify">
-    Engineer in Informatics Science with 6 years + of experience in software development. Dominion of various programming
-    languages, frameworks, CMS and graphics engines. Experience in WEB design and development. Work with Data Base handled
-    systems, as well as design, normalization and migration. Knowledge of work with graphic design tools for image
-    manipulation , User Interfaces design, Web sites, logos and other ones.
+  <div class='text-3xl font-bold'>Experience</div>
+
+  <div class='mb-10'>
+    <CVItem
+      title='Senior Front-End Software Developer'
+      subtitle='Biron groupe santé : May 2022 - Today'
+      tags={'Typescript, Angular 14, Angular Material, OAuth, MSAL, SASS, Jest, Cypress'}
+    >
+      <ul class='my-4'>
+        <li class='ml-6 list-disc'>Development of a new patient management project with Angular and Nx Monorepo</li>
+        <li class='ml-6 list-disc'>
+          Delivery of a Angular project to manage COVID screenings for international travelers
+        </li>
+        <li class='ml-6 list-disc'>Implementation of automated tests E2E Cypress</li>
+      </ul>
+    </CVItem>
+
+    <CVItem
+      title='Senior Software Developer'
+      subtitle='Intact Financial Corporation : Jan 2020 - May 2022'
+      tags={'Typescript, Angular 14, SASS, Java/Spring, Jest, Cypress, Jenkins, OpenShift, Nx Monorepo'}
+    >
+      <div class='my-4'>
+        Within Intact Lab, always trying to develop and improve outstanding experiences for the public and clients
+      </div>
+
+      <ul class='my-4'>
+        <li class='ml-6 list-disc'>
+          Development of an inter-provincial online quoter for Intact, belair direct and National Bank with significant
+          traffic
+        </li>
+        <li class='ml-6 list-disc'>Development of an online insurance purchase project with Moneris</li>
+        <li class='ml-6 list-disc'>Improved pipeline efficiency through a micro frontend architecture</li>
+        <li class='ml-6 list-disc'>Actively increasing the completion rates by setting up A/B tests</li>
+        <li class='ml-6 list-disc'>Mentoring of new employees and interns</li>
+      </ul>
+    </CVItem>
+
+    <CVItem
+      title=' Software Developer'
+      subtitle='Freelance : 2020 - 2022'
+      tags={'React/NextJs, 11ty, Javascript, SASS, Netlify, Forestry.io, Cloud function, SendGrid'}
+    >
+      <ul class='my-4'>
+        <li class='ml-6 list-disc'>Creation of personalized websites for small enterprises</li>
+        <li class='ml-6 list-disc'>Creation of responsive design</li>
+        <li class='ml-6 list-disc'>Content creation and SEO optimization</li>
+        <li class='ml-6 list-disc'>Domain management, hosting and SSL certificate</li>
+      </ul>
+    </CVItem>
+
+    <CVItem
+      title='Programming and Research Planning Officer'
+      subtitle='CISSS Montérégie-Centre : Apr 2019 - Jan 2020'
+      tags={'Bash, HTML, CSS, JavaScript'}
+    >
+      <ul class='my-4'>
+        <li class='ml-6 list-disc'>IT project management in the laboratory</li>
+        <li class='ml-6 list-disc'>Management and support of the laboratory information system</li>
+        <li class='ml-6 list-disc'>Optimization and automation of processes and tasks</li>
+        <li class='ml-6 list-disc'>Establishment of a register of non-compliance reports</li>
+      </ul>
+    </CVItem>
   </div>
 
-  <div class="mb-5">
-    <div class="text-3xl w-full font-bold">Education</div>
+  <h2 class='mb-4 text-3xl font-bold'>Education</h2>
+
+  <div class='mb-10'>
+    <CVItem
+      title='Bachelor in Computer Science and Software Engineering'
+      subtitle='2017 to 2019 at Université du Québec à Montréal'
+    >
+      <div class='my-4 ml-4 list-disc list-item'>Holder of 2 scholarships for excellence</div>
+    </CVItem>
   </div>
 
-  <div class="time-line-container grid gap-4 mb-10">
-    <TimeLineElement
-      title="Technician Information-Technology"
-      subtitle="2006 to 2009 at Osvaldo Herrera Polytechnic institute, Habana, Cuba"
-    />
-    <TimeLineElement
-      title="Informatics Science Engineer"
-      subtitle="2010 to 2015 at University of Informatics Science (UCI), Habana, Cuba"
-    />
+  <h2 class='mb-4 text-3xl font-bold'>Skills</h2>
+
+  <div class='flex flex-wrap gap-12'>
+    <div>
+      <h3 class='text-lg font-semibold'>Langages</h3>
+      <ul class='mt-2 mx-4 list-disc'>
+        <li>JavaScript</li>
+        <li>Typescript</li>
+        <li>Java</li>
+        <li>Python</li>
+        <li>CSS/SASS</li>
+      </ul>
+    </div>
+
+    <div>
+      <h3 class='text-lg font-semibold'>Front-end tech</h3>
+      <ul class='mt-2 mx-4 list-disc'>
+        <li>React</li>
+        <li>Next.js</li>
+        <li>Angular</li>
+        <li>RxJS</li>
+        <li>NgRx</li>
+        <li>11ty</li>
+        <li>Astro</li>
+        <li>Taildwind CSS</li>
+      </ul>
+    </div>
+
+    <div>
+      <h3 class='text-lg font-semibold'>Back-end tech</h3>
+      <ul class='mt-2 mx-4 list-disc'>
+        <li>Node.js</li>
+        <li>Nest.js</li>
+        <li>Spring Boot</li>
+        <li>Django</li>
+        <li>Flask</li>
+      </ul>
+    </div>
+
+    <div>
+      <h3 class='text-lg font-semibold'>Tools</h3>
+      <ul class='mt-2 mx-4 list-disc'>
+        <li>Git</li>
+        <li>Azure Devops</li>
+        <li>Jenkins</li>
+        <li>OpenShift</li>
+        <li>Jira</li>
+        <li>Scrum</li>
+        <li>Kanban</li>
+      </ul>
+    </div>
   </div>
-
-  <div class="mb-5">
-    <div class="text-3xl w-full font-bold">Experience</div>
-  </div>
-
-  <div class="time-line-container mb-10">
-    <TimeLineElement
-      title="UI Designer and Developer at Integral Access Control System (Thesis)"
-      subtitle="From 2015 at XETID, Habana, Cuba"
-      desc="System multiplatform that includes the steps of a company's personnel, the structure and composition thereof, as well as a powerful designer of credentials and module of control of access. Outspread at the MINFAR and another entities of the country. Technologies: C++, Qt Framework, Subversión, Visual Paradigm, PostgreSQL, Jmeter"
-    />
-    <TimeLineElement
-      title="Web Developer at Integral Oil Drilling System 2.0"
-      subtitle="From 2015 to 2016 at CEDIN, UCI, Habana, Cuba"
-      desc="System of steps of process of perforation of oil wells. Outspread in the direction of Intervención of Wells and various wells of drilling of the Occident of the country. Generate reports and graphs of process of perforation making use of data mining. Technologies: Php,Symfony 2.7 , Subversión, PostgreSQL, HigthChart, Ireport, Boostrap 2, JQuery, HTML,CSS, JavaScript"
-    />
-    <TimeLineElement
-      title="Full Stack Dev, Software Architect and Project Leader at Integral Oil Drilling System 3.0"
-      subtitle="From 2016 to 2017 at CEDIN, UCI, Habana, Cuba"
-      desc="System of steps of process of perforation of oil wells. Outspread in the direction of Intervención of Wells and various wells of drilling of the Occident of the country. Generate reports and graphs of process of perforation making use of data mining. Technologies: Php,Symfony 2.8 , Gitlab, PostgreSQL, HigthChart, Boostrap 2, JQuery, HTML,CSS, JavaScript"
-    />
-    <TimeLineElement
-      title="Full Stack Dev, UI/UX Designer and Software Architect at Primary Information System"
-      subtitle="From 2017 to 2018 at CEDIN, UCI, Habana, Cuba"
-      desc="System of steps of primary information at a company. personnel's steps, control of access, impression of credentials, steps of locales, structure and composition. Technologies: Php,Symfony 3.3 , Gitlab, PostgreSQL, , Boostrap 3, JQuery, HTML,CSS, JavaScript"
-    />
-  </div>
-
-  <div class="mb-5">
-    <div class="text-3xl w-full font-bold">Certifications</div>
-  </div>
-
-  <ul class="list-disc mx-6 mb-10 grid gap-2">
-    <li>
-      <a href="https://www.efset.org/cert/DxtNKG" target="_blank"> EF SET English Certificate 74/100 (C2 Proficient)</a>
-    </li>
-    <li>
-      <a href="https://certiprof.com/pages/scrum-foundation-professional-certificate-sfpc-en-sp" target="_blank"> Scrum Foundation Professional Certificate (SFPC)</a>
-    </li>
-  </ul>
-
-  <div class="mb-5">
-    <div class="text-3xl w-full font-bold">Skills</div>
-  </div>
-
-  <ul class="list-disc md:columns-5 columns-2 mx-6">
-    <li>Spanish (Native)</li>
-    <li>English (C2)</li>
-    <li>JavaScript</li>
-    <li>C++</li>
-    <li>PHP</li>
-    <li>Ruby</li>
-    <li>Postgres SQL</li>
-    <li>MySQL</li>
-    <li>CSS</li>
-    <li>SASS</li>
-    <li>HTML</li>
-    <li>Node.js</li>
-    <li>Ruby on Rails</li>
-    <li>AngularJS</li>
-    <li>VUE</li>
-    <li>Astro</li>
-    <li>Symfony 3</li>
-    <li>Yii2</li>
-    <li>Bootstrap</li>
-    <li>Taildwind</li>
-    <li>JQuery</li>
-    <li>Wordpress</li>
-    <li>Git</li>
-    <li>Jira</li>
-    <li>Trello</li>
-    <li>BaseCamp</li>
-    <li>Scrum</li>
-    <li>Shape Up</li>
-    <li>LeanStartup</li>
-    <li>UI Design</li>
-    <li>WEB Design</li>
-    <li>Logo Design</li>
-    <li>Image Manipulation</li>
-    <li>Office Suite</li>
-    <li>Adobe Photoshop</li>
-    <li>KdenLive</li>
-  </ul>
 </BaseLayout>
