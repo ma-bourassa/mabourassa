@@ -4,7 +4,7 @@ import * as dotenv from 'dotenv';
 dotenv.config();
 import cookie from 'cookie';
 
-const stripe = require('stripe')(process.env.STRIPE_SECRET_KEY, {
+const stripe = require('stripe')(process.env.SECRET_STRIPE_KEY, {
   apiVersion: '2020-08-27; cart_sessions_beta=v1;',
 });
 

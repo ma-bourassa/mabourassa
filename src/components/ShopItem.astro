@@ -1,11 +1,12 @@
 ---
 interface Props {
+  id: string;
   name: string;
   image: string;
   price: string;
   url: string;
 }
-const { name, image, price, url }: Props = Astro.props;
+const { id, name, image, price, url }: Props = Astro.props;
 ---
 
 <div>
@@ -17,6 +18,7 @@ const { name, image, price, url }: Props = Astro.props;
     <p class='mt-2 text-xl font-medium text-gray-900'>{price}</p>
   </a>
   <div class='jus pt-4 mt-auto flex'>
-    <div class='btn btn-accent'>Add to cart</div>
+    <div class='btn btn-accent' data-add-to-cart data-product-id={id}>Add to cart</div>
+    <div class='text-error' id='error-message'></div>
   </div>
 </div>

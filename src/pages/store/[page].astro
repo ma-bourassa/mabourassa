@@ -11,7 +11,7 @@ export async function getStaticPaths() {
     return {
       params: { page: slugify(price.product.name) },
       props: {
-        id: price.id,
+        id: price.product.id,
         name: price.product.name,
         description: price.product.description,
         image: price.product.images[0],
@@ -54,7 +54,8 @@ const { id, name, description, image, price }: Props = Astro.props;
           size='4'
         />
       </div>
-      <button class='btn btn-wide btn-accent'>Add to cart</button>
+      <button class='btn btn-wide btn-accent' data-add-to-cart data-product-id={id}>Add to cart</button>
+      <div class='text-error' id='error-message'></div>
     </div>
   </div>
 </BaseLayout>
