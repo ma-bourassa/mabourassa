@@ -15,6 +15,7 @@ const prices: IPrice[] = await getAllProducts();
     {
       prices.map((price) => (
         <ShopItem
+          id={price.product.id}
           name={price.product.name}
           image={price.product.images[0]}
           price={toDollars(price.unit_amount)}
