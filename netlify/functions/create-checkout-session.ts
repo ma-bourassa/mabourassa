@@ -26,6 +26,7 @@ export const handler: Handler = async (event, context) => {
     from_cart_session: cartSessionCookie,
     success_url: process.env.URL,
     cancel_url: process.env.URL,
+    locale: 'en',
   });
 
   return {
