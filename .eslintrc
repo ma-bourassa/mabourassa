@@ -17,7 +17,7 @@
     "sourceType": "module"
   },
   "plugins": ["@typescript-eslint", "tailwindcss"],
-  "rules": { "tailwindcss/no-custom-classname": "off" },
+  "rules": { "tailwindcss/no-custom-classname": "off", "@typescript-eslint/no-var-requires": "off" },
   "overrides": [
     {
       // Define the configuration for `.astro` file.
