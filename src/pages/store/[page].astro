@@ -41,20 +41,24 @@ const { id, name, description, image, price }: Props = Astro.props;
       <p class='leading-relaxed mb-4'>
         {description}
       </p>
-      <div class='flex gap-4 items-center mb-4'>
+      <div class='flex justify-between gap-4 items-end mb-4'>
         <span class='text-2xl'>{toDollars(price)}</span>
-        <input
-          class='input input-bordered ml-4'
-          type='number'
-          id='quantity'
-          name='quantity'
-          min='1'
-          value='1'
-          autocomplete='off'
-          size='4'
-        />
+        <div class='form-control'>
+          <label class='label'>
+            <span class='label-text'>Quantity</span>
+          </label>
+          <input
+            class='input input-bordered w-24'
+            type='number'
+            id='quantity'
+            name='quantity'
+            min='1'
+            value='1'
+            autocomplete='off'
+          />
+        </div>
       </div>
-      <button class='btn btn-wide btn-accent' data-add-to-cart data-product-id={id}>Add to cart</button>
+      <button class='btn btn-accent' data-add-to-cart data-product-id={id}>Add to cart</button>
       <div class='text-error' id='error-message'></div>
     </div>
   </div>
