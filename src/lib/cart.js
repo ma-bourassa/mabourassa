@@ -1,5 +1,5 @@
 // Fetch the CartSession client secret
-const response = await fetch('/.netlify/functions/cart-session');
+const response = await fetch('/api/cart-session');
 const { clientSecret } = await response.json();
 
 // Create the Cart Element
@@ -57,7 +57,7 @@ addBtns.forEach((addBtn) => {
 // Handle checkout events
 cartElement.on('checkout', async () => {
   // Submit the checkout attempt to your server
-  const res = await fetch('/.netlify/functions/create-checkout-session', {
+  const res = await fetch('/api/create-checkout-session', {
     method: 'POST',
   });
   const { error, checkoutUrl } = await res.json();

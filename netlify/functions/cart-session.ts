@@ -58,6 +58,8 @@ export const handler: Handler = async (event: Event, context: Context) => {
     statusCode: 200,
     headers: {
       'Set-Cookie': myCookie,
+      'Cache-Control': 'no-cache',
+      'Content-Type': 'application/json',
     },
     body: JSON.stringify({
       clientSecret: cartSession.client_secret,
