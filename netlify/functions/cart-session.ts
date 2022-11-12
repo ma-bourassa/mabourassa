@@ -6,13 +6,30 @@ import * as dotenv from 'dotenv';
 dotenv.config();
 import cookie from 'cookie';
 
-export const handler: Handler = async (event: Event, context: Context) => {
-  const stripe = require('stripe')(process.env.SECRET_STRIPE_KEY, {
-    apiVersion: '2020-08-27; cart_sessions_beta=v1;',
-  });
+const stripe = require('stripe')(process.env.SECRET_STRIPE_KEY, {
+  apiVersion: '2020-08-27; cart_sessions_beta=v1;',
+});
 
-  const cartSessionCookie = cookie.parse(event.headers.cookie)['cart_session'];
-  console.log(cartSessionCookie);
+// const headers = {
+//   'Access-Control-Allow-Origin': '*',
+//   'Access-Control-Allow-Headers': 'Content-Type',
+// };
+
+export const handler: Handler = async (event: Event, context: Context) => {
+  console.log('event:', { event });
+
+  if (event.httpMethod !== 'GET') {
+    return {
+      statusCode: 400,
+      // headers,
+      body: 'This was not a GET request!',
+    };
+  }
+  const cookies = cookie.parse(event.headers?.cookie || '');
+  const cartSessionCookie = cookies?.['cart_session'] || '';
+  console.log({ cartSessionCookie });
+
+  console.log('cartSessionCookie : ', cartSessionCookie);
 
   let cartSession;
 
@@ -23,7 +40,7 @@ export const handler: Handler = async (event: Event, context: Context) => {
         path: `cart/sessions/${cartSessionCookie}`,
       }),
     });
-    console.log({ resource });
+    console.log('resource cookie:', { resource });
 
     cartSession = await new resource(stripe).request();
   }
@@ -35,7 +52,7 @@ export const handler: Handler = async (event: Event, context: Context) => {
         path: `cart/sessions`,
       }),
     });
-    console.log({ resource });
+    console.log('resource no cookie:', { resource });
 
     cartSession = await new resource(stripe).request({
       currency: 'cad',
@@ -45,7 +62,7 @@ export const handler: Handler = async (event: Event, context: Context) => {
     });
   }
 
-  console.log({ cartSession });
+  console.log('cartSession:', { cartSession });
 
   const myCookie = cookie.serialize('cart_session', cartSession.id, {
     secure: true,
@@ -57,7 +74,6 @@ export const handler: Handler = async (event: Event, context: Context) => {
   return {
     statusCode: 200,
     headers: {
-      'Access-Control-Allow-Origin': '*',
       'Set-Cookie': myCookie,
       'Cache-Control': 'no-cache',
       'Content-Type': 'application/json',

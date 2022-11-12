@@ -9,7 +9,8 @@ const stripe = require('stripe')(process.env.SECRET_STRIPE_KEY, {
 });
 
 export const handler: Handler = async (event, context) => {
-  const cartSessionCookie = cookie.parse(event.headers.cookie)['cart_session'];
+  const cookies = cookie.parse(event.headers?.cookie || '');
+  const cartSessionCookie = cookies?.['cart_session'] || '';
 
   if (!cartSessionCookie) {
     return { statusCode: 400, body: JSON.stringify({ message: 'CartSession ID not found' }) };
