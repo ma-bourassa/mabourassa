@@ -6,23 +6,11 @@ import * as dotenv from 'dotenv';
 dotenv.config();
 import cookie from 'cookie';
 
-const headers = {
-  'Access-Control-Allow-Origin': '*',
-  'Access-Control-Allow-Headers': 'Content-Type',
-};
-
 const stripe = require('stripe')(process.env.SECRET_STRIPE_KEY, {
   apiVersion: '2020-08-27; cart_sessions_beta=v1;',
 });
 
 export const handler: Handler = async (event: Event, context: Context) => {
-  if (event.httpMethod !== 'GET') {
-    return {
-      statusCode: 400,
-      headers,
-      body: 'This was not a GET request!',
-    };
-  }
   const cartSessionCookie = cookie.parse(event.headers.cookie)['cart_session'];
   let cartSession;
 
@@ -63,7 +51,7 @@ export const handler: Handler = async (event: Event, context: Context) => {
   return {
     statusCode: 200,
     headers: {
-      ...headers,
+      'Access-Control-Allow-Origin': '*',
       'Set-Cookie': myCookie,
       'Cache-Control': 'no-cache',
       'Content-Type': 'application/json',
