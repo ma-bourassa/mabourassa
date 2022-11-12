@@ -7,13 +7,13 @@ dotenv.config();
 import cookie from 'cookie';
 
 export const handler: Handler = async (event: Event, context: Context) => {
-  console.log(process.env.SECRET_STRIPE_KEY);
-
   const stripe = require('stripe')(process.env.SECRET_STRIPE_KEY, {
     apiVersion: '2020-08-27; cart_sessions_beta=v1;',
   });
 
   const cartSessionCookie = cookie.parse(event.headers.cookie)['cart_session'];
+  console.log(cartSessionCookie);
+
   let cartSession;
 
   if (cartSessionCookie) {
@@ -23,6 +23,7 @@ export const handler: Handler = async (event: Event, context: Context) => {
         path: `cart/sessions/${cartSessionCookie}`,
       }),
     });
+    console.log({ resource });
 
     cartSession = await new resource(stripe).request();
   }
@@ -34,6 +35,7 @@ export const handler: Handler = async (event: Event, context: Context) => {
         path: `cart/sessions`,
       }),
     });
+    console.log({ resource });
 
     cartSession = await new resource(stripe).request({
       currency: 'cad',
@@ -42,6 +44,8 @@ export const handler: Handler = async (event: Event, context: Context) => {
       },
     });
   }
+
+  console.log({ cartSession });
 
   const myCookie = cookie.serialize('cart_session', cartSession.id, {
     secure: true,
