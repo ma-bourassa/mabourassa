@@ -6,11 +6,13 @@ import * as dotenv from 'dotenv';
 dotenv.config();
 import cookie from 'cookie';
 
-const stripe = require('stripe')(process.env.SECRET_STRIPE_KEY, {
-  apiVersion: '2020-08-27; cart_sessions_beta=v1;',
-});
-
 export const handler: Handler = async (event: Event, context: Context) => {
+  console.log(process.env.SECRET_STRIPE_KEY);
+
+  const stripe = require('stripe')(process.env.SECRET_STRIPE_KEY, {
+    apiVersion: '2020-08-27; cart_sessions_beta=v1;',
+  });
+
   const cartSessionCookie = cookie.parse(event.headers.cookie)['cart_session'];
   let cartSession;
 
