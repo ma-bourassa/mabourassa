@@ -16,8 +16,6 @@ const stripe = require('stripe')(process.env.SECRET_STRIPE_KEY, {
 // };
 
 export const handler: Handler = async (event: Event, context: Context) => {
-  console.log('event:', { event });
-
   if (event.httpMethod !== 'GET') {
     return {
       statusCode: 400,
@@ -27,9 +25,6 @@ export const handler: Handler = async (event: Event, context: Context) => {
   }
   const cookies = cookie.parse(event.headers?.cookie || '');
   const cartSessionCookie = cookies?.['cart_session'] || '';
-  console.log({ cartSessionCookie });
-
-  console.log('cartSessionCookie : ', cartSessionCookie);
 
   let cartSession;
 
@@ -40,7 +35,6 @@ export const handler: Handler = async (event: Event, context: Context) => {
         path: `cart/sessions/${cartSessionCookie}`,
       }),
     });
-    console.log('resource cookie:', { resource });
 
     cartSession = await new resource(stripe).request();
   }
@@ -52,7 +46,6 @@ export const handler: Handler = async (event: Event, context: Context) => {
         path: `cart/sessions`,
       }),
     });
-    console.log('resource no cookie:', { resource });
 
     cartSession = await new resource(stripe).request({
       currency: 'cad',
@@ -61,8 +54,6 @@ export const handler: Handler = async (event: Event, context: Context) => {
       },
     });
   }
-
-  console.log('cartSession:', { cartSession });
 
   const myCookie = cookie.serialize('cart_session', cartSession.id, {
     secure: true,
