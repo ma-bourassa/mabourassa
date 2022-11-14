@@ -4,8 +4,9 @@ const { clientSecret } = await response.json();
 
 // Create the Cart Element
 // eslint-disable-next-line no-undef
-const stripe = Stripe(import.meta.env.PUBLIC_STRIPE_KEY, {
+const stripe = await Stripe(import.meta.env.PUBLIC_STRIPE_KEY, {
   betas: ['cart_beta_1'],
+  locale: 'en',
 });
 // If you've used the Payment Element before, you might be accustomed to passing the
 // PaymentIntent client secret here while initializing elements. For Cart, you instead pass the

@@ -9,13 +9,8 @@ const stripe = require('stripe')(process.env.SECRET_STRIPE_KEY, {
 });
 
 export const handler: Handler = async (event, context) => {
-  if (event.httpMethod !== 'POST') {
-    return {
-      statusCode: 400,
-      body: 'This was not a POST request!',
-    };
-  }
-  const cartSessionCookie = cookie.parse(event.headers.cookie)['cart_session'];
+  const cookies = cookie.parse(event.headers?.cookie || '');
+  const cartSessionCookie = cookies?.['cart_session'] || '';
 
   if (!cartSessionCookie) {
     return { statusCode: 400, body: JSON.stringify({ message: 'CartSession ID not found' }) };
@@ -26,10 +21,14 @@ export const handler: Handler = async (event, context) => {
     from_cart_session: cartSessionCookie,
     success_url: process.env.URL,
     cancel_url: process.env.URL,
+    locale: 'en',
   });
 
   return {
     statusCode: 200,
+    headers: {
+      'Access-Control-Allow-Origin': '*',
+    },
     body: JSON.stringify({
       checkoutUrl: checkoutSession.url,
     }),
