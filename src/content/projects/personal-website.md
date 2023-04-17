@@ -1,5 +1,4 @@
 ---
-layout: '/src/layouts/ProjectLayout.astro'
 title: 'Personal website'
 description: 'Personal website used to showcase my projects and as a sandbox to play around with new technologies.'
 image: '/project3.jpg'

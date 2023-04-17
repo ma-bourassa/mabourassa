@@ -6,35 +6,35 @@ import BaseLayout from '../layouts/BaseLayout.astro';
   <h1 class='mb-8 text-3xl font-bold'>Contact me</h1>
 
   <form name='Contact' method='POST' data-netlify='true'>
-    <div class='form-control max-w-sm mb-2'>
+    <div class='form-control mb-2 max-w-sm'>
       <label class='label'>
         <span class='label-text'>Name</span>
       </label>
-      <input name='Name' id='name' type='text' class='input input-bordered input-accent' required />
+      <input name='Name' id='name' type='text' class='input-bordered input-accent input' required />
     </div>
 
-    <div class='form-control max-w-sm mb-2'>
+    <div class='form-control mb-2 max-w-sm'>
       <label class='label'>
         <span class='label-text'>Email</span>
       </label>
-      <input name='Email' id='email' type='email' class='input input-bordered input-accent' required />
+      <input name='Email' id='email' type='email' class='input-bordered input-accent input' required />
     </div>
 
-    <div class='form-control max-w-md mb-4'>
+    <div class='form-control mb-4 max-w-md'>
       <label class='label'>
         <span class='label-text'>Message</span>
       </label>
-      <textarea name='Message' id='message' class='textarea textarea-bordered textarea-accent' rows='6' required
+      <textarea name='Message' id='message' class='textarea-bordered textarea-accent textarea' rows='6' required
       ></textarea>
     </div>
 
-    <button type='submit' class='btn btn-wide btn-accent'>Send</button>
+    <button type='submit' class='btn-accent btn-wide btn'>Send</button>
   </form>
 
-  <div id='alert' class='bottom-12 w-1/2 absolute lg:w-1/4 transition-opacity ease-in-out duration-1000 opacity-0'>
+  <div id='alert' class='absolute bottom-12 w-1/2 opacity-0 transition-opacity duration-1000 ease-in-out lg:w-1/4'>
     <div class='alert alert-success'>
       <div>
-        <svg xmlns='http://www.w3.org/2000/svg' class='stroke-current shrink-0 h-6 w-6' fill='none' viewBox='0 0 24 24'
+        <svg xmlns='http://www.w3.org/2000/svg' class='h-6 w-6 shrink-0 stroke-current' fill='none' viewBox='0 0 24 24'
           ><path
             stroke-linecap='round'
             stroke-linejoin='round'
@@ -48,32 +48,36 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 </BaseLayout>
 
 <script>
-  const form: HTMLFormElement = document.querySelector('form');
+  const form: HTMLFormElement | null = document.querySelector('form');
   const alert = document.getElementById('alert');
 
-  form.addEventListener('submit', (event) => {
-    event.preventDefault();
+  if (form) {
+    form.addEventListener('submit', (event) => {
+      event.preventDefault();
 
-    const formData: any = new FormData(form);
+      const formData: any = new FormData(form);
 
-    fetch('/', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-      body: new URLSearchParams(formData).toString(),
-    })
-      .then(() => {
-        form.reset();
-        toggleAlert();
-        setTimeout(() => {
-          toggleAlert();
-        }, 3000);
-        console.log('Form successfully submitted');
+      fetch('/', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+        body: new URLSearchParams(formData).toString(),
       })
-      .catch((error) => console.error(error));
-  });
+        .then(() => {
+          form.reset();
+          toggleAlert();
+          setTimeout(() => {
+            toggleAlert();
+          }, 3000);
+          console.log('Form successfully submitted');
+        })
+        .catch((error) => console.error(error));
+    });
+  }
 
   function toggleAlert() {
-    alert.classList.toggle('opacity-0');
-    alert.classList.toggle('opacity-100');
+    if (alert) {
+      alert.classList.toggle('opacity-0');
+      alert.classList.toggle('opacity-100');
+    }
   }
 </script>

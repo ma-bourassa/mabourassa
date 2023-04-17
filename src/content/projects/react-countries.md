@@ -1,5 +1,4 @@
 ---
-layout: '/src/layouts/ProjectLayout.astro'
 title: 'Countries Rest React'
 description: 'Application that gives some information about all countries in the world'
 image: '/project2.jpg'

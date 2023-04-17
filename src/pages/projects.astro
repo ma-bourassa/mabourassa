@@ -14,10 +14,10 @@ const projects = await getAllProjects();
       projects.map((project) => (
         <>
           <HorizontalCard
-            title={project.frontmatter.title}
-            img={project.frontmatter.image}
-            desc={project.frontmatter.description}
-            url={project.url}
+            title={project.data.title}
+            img={project.data.image}
+            desc={project.data.description}
+            url={`/${project.collection}/${project.slug}`}
           />
           <div class='divider' />
         </>

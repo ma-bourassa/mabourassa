@@ -32,23 +32,23 @@ const { id, name, description, image, price }: Props = Astro.props;
 ---
 
 <BaseLayout title={name} description={description} image={image}>
-  <div class='gap-8 flex flex-wrap items-center justify-center'>
+  <div class='flex flex-wrap items-center justify-center gap-8'>
     <img src={image} alt={name} class='w-80 rounded-lg' />
 
     <div class='flex flex-col'>
-      <h1 class='text-3xl mb-4'>{name}</h1>
+      <h1 class='mb-4 text-3xl'>{name}</h1>
 
-      <p class='leading-relaxed mb-4'>
+      <p class='mb-4 leading-relaxed'>
         {description}
       </p>
-      <div class='flex justify-between gap-4 items-end mb-4'>
+      <div class='mb-4 flex items-end justify-between gap-4'>
         <span class='text-2xl'>{toDollars(price)}</span>
         <div class='form-control'>
           <label class='label'>
             <span class='label-text'>Quantity</span>
           </label>
           <input
-            class='input input-bordered w-24'
+            class='input-bordered input w-24'
             type='number'
             id='quantity'
             name='quantity'
@@ -58,7 +58,7 @@ const { id, name, description, image, price }: Props = Astro.props;
           />
         </div>
       </div>
-      <button class='btn btn-accent' data-add-to-cart data-product-id={id}>Add to cart</button>
+      <button class='btn-accent btn' data-add-to-cart data-product-id={id}>Add to cart</button>
       <div class='text-error' id='error-message'></div>
     </div>
   </div>

@@ -2,7 +2,7 @@
 const { title, img, desc, url, tags } = Astro.props;
 ---
 
-<div class='bg-base-100 rounded-lg transition ease-in-out hover:scale-[102%] hover:shadow-xl'>
+<div class='rounded-lg bg-base-100 transition ease-in-out hover:scale-[102%] hover:shadow-xl'>
   <a href={url}>
     <div class='hero-content flex-col md:flex-row'>
       <img src={img} alt={title} class='max-w-full rounded-lg md:max-w-[13rem]' />
@@ -12,7 +12,7 @@ const { title, img, desc, url, tags } = Astro.props;
         </h1>
         <p class='text-1xl py-1'>{desc}</p>
         <div class='card-actions justify-end'>
-          {tags && tags.map((tag) => <div class='badge badge-outline'>{tag}</div>)}
+          {tags && tags.map((tag) => <div class='badge-outline badge'>{tag}</div>)}
         </div>
       </div>
     </div>

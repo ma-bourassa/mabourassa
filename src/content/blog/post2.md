@@ -1,8 +1,7 @@
 ---
-layout: '/src/layouts/PostLayout.astro'
-title: 'Demo Post 1'
+title: 'Demo Post 2'
 description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.'
-pubDate: 'Sep 10 2022'
+pubDate: 'Sep 11 2022'
 image: '/post_img.webp'
 ---
 

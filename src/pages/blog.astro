@@ -14,10 +14,10 @@ const posts = await getAllPosts();
       posts.map((post) => (
         <>
           <HorizontalCard
-            title={post.frontmatter.title}
-            img={post.frontmatter.image}
-            desc={post.frontmatter.description}
-            url={post.url}
+            title={post.data.title}
+            img={post.data.image}
+            desc={post.data.description}
+            url={`/${post.collection}/${post.slug}`}
           />
           <div class='divider' />
         </>
