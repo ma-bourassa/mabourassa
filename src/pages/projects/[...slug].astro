@@ -1,0 +1,35 @@
+---
+import { CollectionEntry, getCollection } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+
+interface Props {
+  project: CollectionEntry<'projects'>;
+}
+// This is a dynamic route that generates a page for every Markdown file in src/content/
+// Read more about dynamic routes and this `getStaticPaths` function in the Astro docs:
+// https://docs.astro.build/en/core-concepts/routing/#dynamic-routes
+export async function getStaticPaths() {
+  const projects = await getCollection('projects');
+  return projects.map((project) => ({
+    params: { slug: project.slug },
+    props: { project },
+  }));
+}
+const { project } = Astro.props;
+const { Content } = await project.render();
+---
+
+<BaseLayout title={project.data.title} description={project.data.description} image={project.data.image}>
+  <div class='md:flex md:justify-center'>
+    <article class='prose-lg prose max-w-[1280px]'>
+      {project.data.image && <img src={project.data.image} alt={project.data.title} class='mb-6 w-full' />}
+      <h1 class='title my-2 text-4xl font-bold'>{project.data.title}</h1>
+      <div>{project.data.description}</div>
+      <div class='mt-2 flex gap-2'>
+        {project.data.tags.map((tag) => <div class='badge-info badge badge-lg'>{tag}</div>)}
+      </div>
+      <div class='divider my-2'></div>
+      <Content />
+    </article>
+  </div>
+</BaseLayout>

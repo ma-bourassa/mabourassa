@@ -17,7 +17,7 @@ const posts = await getAllPosts();
             title={post.data.title}
             img={post.data.image}
             desc={post.data.description}
-          url={`${post.slug}`}
+            url={`/${post.collection}/${post.slug}`}
           />
           <div class='divider' />
         </>

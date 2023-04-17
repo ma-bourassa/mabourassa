@@ -20,9 +20,9 @@ const { image, title = SITE.title, description = SITE.description }: Props = Ast
     <BaseHead title={title} description={description} image={image} />
   </head>
   <body>
-    <div class='bg-base-100 drawer drawer-mobile'>
+    <div class='drawer-mobile drawer bg-base-100'>
       <input id='my-drawer' type='checkbox' class='drawer-toggle' />
-      <div class='drawer-content bg-base-100 flex min-h-screen flex-col'>
+      <div class='drawer-content flex min-h-screen flex-col bg-base-100'>
         <Header />
         <main class='container mx-auto flex-1 p-8 md:p-12'>
           <slot />

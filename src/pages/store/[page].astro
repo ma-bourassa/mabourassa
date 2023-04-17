@@ -48,7 +48,7 @@ const { id, name, description, image, price }: Props = Astro.props;
             <span class='label-text'>Quantity</span>
           </label>
           <input
-            class='input input-bordered w-24'
+            class='input-bordered input w-24'
             type='number'
             id='quantity'
             name='quantity'
@@ -58,7 +58,7 @@ const { id, name, description, image, price }: Props = Astro.props;
           />
         </div>
       </div>
-      <button class='btn btn-accent' data-add-to-cart data-product-id={id}>Add to cart</button>
+      <button class='btn-accent btn' data-add-to-cart data-product-id={id}>Add to cart</button>
       <div class='text-error' id='error-message'></div>
     </div>
   </div>

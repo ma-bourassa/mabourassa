@@ -1,5 +1,7 @@
 ---
+import { getCollection } from 'astro:content';
+
 export async function getAllProjects() {
-  return await Astro.glob('/**/projects/*.md');
+  return await getCollection('projects');
 }
 ---

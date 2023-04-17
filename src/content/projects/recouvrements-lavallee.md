@@ -1,5 +1,4 @@
 ---
-layout: '/src/layouts/ProjectLayout.astro'
 title: 'Les recouvrements de sols André Lavallée'
 description: 'Website for a flooring company'
 image: '/project1.jpg'

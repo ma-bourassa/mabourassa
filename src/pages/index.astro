@@ -21,7 +21,7 @@ const last_projects = projects.slice(0, 3);
       </text>
     </div>
     <div class='my-8'>
-      <a class='btn btn-accent' href='/contact/'>Contact me</a>
+      <a class='btn-accent btn' href='/contact/'>Contact me</a>
     </div>
   </div>
 
@@ -30,10 +30,10 @@ const last_projects = projects.slice(0, 3);
     last_projects.map((project) => (
       <>
         <HorizontalCard
-          title={project.frontmatter.title}
-          img={project.frontmatter.image}
-          desc={project.frontmatter.description}
-          url={project.url}
+          title={project.data.title}
+          img={project.data.image}
+          desc={project.data.description}
+          url={`/${project.collection}/${project.slug}`}
           target='_self'
         />
         <div class='divider my-0' />
@@ -49,7 +49,7 @@ const last_projects = projects.slice(0, 3);
           title={post.data.title}
           img={post.data.image}
           desc={post.data.description}
-          url={`${post.collection}/${post.slug}`}
+          url={`/${post.collection}/${post.slug}`}
           target='_self'
         />
         <div class='divider my-0' />
