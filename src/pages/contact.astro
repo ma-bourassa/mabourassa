@@ -6,21 +6,21 @@ import BaseLayout from '../layouts/BaseLayout.astro';
   <h1 class='mb-8 text-3xl font-bold'>Contact me</h1>
 
   <form name='Contact' method='POST' data-netlify='true'>
-    <div class='form-control max-w-sm mb-2'>
+    <div class='form-control mb-2 max-w-sm'>
       <label class='label'>
         <span class='label-text'>Name</span>
       </label>
       <input name='Name' id='name' type='text' class='input input-bordered input-accent' required />
     </div>
 
-    <div class='form-control max-w-sm mb-2'>
+    <div class='form-control mb-2 max-w-sm'>
       <label class='label'>
         <span class='label-text'>Email</span>
       </label>
       <input name='Email' id='email' type='email' class='input input-bordered input-accent' required />
     </div>
 
-    <div class='form-control max-w-md mb-4'>
+    <div class='form-control mb-4 max-w-md'>
       <label class='label'>
         <span class='label-text'>Message</span>
       </label>
@@ -31,10 +31,10 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     <button type='submit' class='btn btn-wide btn-accent'>Send</button>
   </form>
 
-  <div id='alert' class='bottom-12 w-1/2 absolute lg:w-1/4 transition-opacity ease-in-out duration-1000 opacity-0'>
+  <div id='alert' class='absolute bottom-12 w-1/2 opacity-0 transition-opacity duration-1000 ease-in-out lg:w-1/4'>
     <div class='alert alert-success'>
       <div>
-        <svg xmlns='http://www.w3.org/2000/svg' class='stroke-current shrink-0 h-6 w-6' fill='none' viewBox='0 0 24 24'
+        <svg xmlns='http://www.w3.org/2000/svg' class='h-6 w-6 shrink-0 stroke-current' fill='none' viewBox='0 0 24 24'
           ><path
             stroke-linecap='round'
             stroke-linejoin='round'

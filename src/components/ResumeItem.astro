@@ -9,7 +9,7 @@ const { title, subtitle, tags }: Props = Astro.props;
 
 <div class='mt-4 mb-8'>
   <h3 class='mb-2 text-lg font-semibold'>{title}</h3>
-  <span class='text-sm font-light mb-4'>{subtitle}</span>
+  <span class='mb-4 text-sm font-light'>{subtitle}</span>
   <slot />
   {
     tags && (

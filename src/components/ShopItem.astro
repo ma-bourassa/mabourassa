@@ -11,14 +11,14 @@ const { id, name, image, price, url }: Props = Astro.props;
 
 <div>
   <a href={url} class='group'>
-    <div class='rounded-lg h-80'>
+    <div class='h-80 rounded-lg'>
       <img src={image} alt={name} class='h-full w-full object-contain object-center group-hover:opacity-75' />
     </div>
     <h2 class='mt-4'>{name}</h2>
     <p class='mt-2 text-xl font-medium text-gray-900'>{price}</p>
   </a>
-  <div class='jus pt-4 mt-auto flex'>
-    <div class='btn btn-accent' data-add-to-cart data-product-id={id}>Add to cart</div>
+  <div class='jus mt-auto flex pt-4'>
+    <div class='btn-accent btn' data-add-to-cart data-product-id={id}>Add to cart</div>
     <div class='text-error' id='error-message'></div>
   </div>
 </div>

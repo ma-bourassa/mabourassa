@@ -46,10 +46,10 @@ const last_projects = projects.slice(0, 3);
     last_posts.map((post) => (
       <>
         <HorizontalCard
-          title={post.frontmatter.title}
-          img={post.frontmatter.image}
-          desc={post.frontmatter.description}
-          url={post.url}
+          title={post.data.title}
+          img={post.data.image}
+          desc={post.data.description}
+          url={`${post.collection}/${post.slug}`}
           target='_self'
         />
         <div class='divider my-0' />
